@@ -281,7 +281,7 @@ Next is to define the url variable and pass the API ket to the headers used in t
         response = requests.request('GET', url, headers=headers, params=url_params)
         ...
 ```
-Check the response code from the API, 200 means the request was succesful, 404 meaning that there was no results found at the search term, and finally any other code will just return an error to the user. If the status code is 200 returns a JSON object of the results.
+Check the response code from the API, 200 means the request was successful, 404 meaning that there was no results found at the search term, and finally any other code will just return an error to the user. If the status code is 200 returns a JSON object of the results.
 
 ```
 		...
@@ -306,7 +306,7 @@ Check the response code from the API, 200 means the request was succesful, 404 m
 From there the results are passed via the variable context back to the view to be rendered to the user.
 
 ## Front-End Development
-One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all of my css to save time getting Bootsrap to work properly. I have included a few pictures to illistrate my app and it's functionaily outlined above.
+One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all of my css to save time getting Bootstrap to work properly. I have included a few pictures to illustrate my app and it's functionally outlined above.
 
 ### Homepage
 ![Homepage](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Home.png)
@@ -321,6 +321,10 @@ One of the things I would like to come back to is redoing the Front-End with Boo
 ![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20API%20Results.png)
 
 ## Skills Acquired
+I gained many skills during this live project, the one I'd like to dicuss first is confidence. While there are always things that can be improved on, the confidence gained in seeing this project start as nothing and become a usable app has been invaluable to me in my journey to become a professional in the industry. While it displays I still have quite a bit to learn yet, I like to think this project my shows skills to stick with something even when it looks like you've hit a dead-end. 
 
+One of my takeaways from the project and working as a small piece of a larger project that’s already underway is how important version control is to the organization of a project. When there’s even one developer working on a project, things can get messy quick, so being comfortable managing your own branches as well as working around other developer’s branches is an integral part of working as a team. 
+
+Finally, as for technical skills, I gained a lot of knowledge on Python/Django and more specifically the logoc behind Model-View-Controller (MVC) framework pattern. While Django uses a Template, not a controller, and would be considered a Model-View-Template (MVT), I still gained the skills to understand the patternes behind the framework and how it's different parts interact. This will give me the tools to more effectively familiarize myself with new frameworks down the road.
 
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
