@@ -1,0 +1,20 @@
+{% load static %}
+
+
+<nav>
+  <ul>
+    <li><span><a class="nav-link" href="{% url 'MyThai_home' %}">Home</a></span></li>
+    <li><span><a class="nav-link" href="{% url 'MyThai_my_restaurants' %}">MyFood!</a></span></li>
+    <li>
+      <div class="dropdown">
+        <span><button class="dropdown-btn">Add <i class="fa fa-caret-down"></i></button></span>
+          <div class="dropdown-content">
+            <a class="nav-link" href="{% url 'MyThai_add_restaurant' %}">Restaurant</a>
+            <a class="nav-link" href="{% url 'MyThai_add_dish' %}">Dish</a>
+          </div>
+      </div>
+    </li>
+    <li><span><a class="nav-link" href="{% url 'MyThai_restaurant_search' %}">Search</a></span></li>
+    <li><span><a class="nav-link" href="{% url 'home' %}">App Builder 9000</a></span></li>
+  </ul>
+</nav>

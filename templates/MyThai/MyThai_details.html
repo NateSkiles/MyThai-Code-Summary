@@ -1,0 +1,19 @@
+{% extends 'MyThai/MyThai_base.html' %}
+
+{% block tile %} MyThai! | Dish Details {% endblock %}
+
+{% block content %}
+
+    <div class="details-container">
+        <p><a href="{% url 'MyThai_dish_edit' dish.id %}"><i class="fas fa-edit"></i></a></p>
+        <div class="dish-details">
+            <p>Dish Name: {{ dish.dishName|capfirst }}</p>
+            <p>Type: {{ dish.dishType|capfirst }}</p>
+            <p>Restaurant: {{ dish.restaurant|capfirst }}</p>
+            <p>Description: {{ dish.description|capfirst }}</p>
+            <p>Rating (1-10): {{ dish.rating }} </p>
+        </div>
+        <p><button><a href="{% url 'MyThai_dish_delete' dish.id %}"><i class="far fa-trash-alt"></i></a></button></p>
+    </div>
+
+{% endblock %}

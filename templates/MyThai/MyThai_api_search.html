@@ -1,0 +1,88 @@
+{% extends "MyThai/MyThai_base.html" %}
+
+{% block title %}MyThai! | Search{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="search-form">
+            <form action="{% url 'MyThai_restaurant_search' %}" method="GET">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" name="term">Search</button>
+            </form>
+        </div>
+    </div>
+
+    {% if search_result %}
+    <div class="myRestaurants">
+        {% if search_result.success %}
+        <div class="results-panel">
+            <h1>Search Results</h1>
+            <table id="results-table">
+                <thead>
+                        <tr>
+                           <th><span>Restaurant Name</span></th>
+                            <th>Rating</th>
+                            <th>Phone</th>
+                        </tr>
+                </thead>
+
+                <tbody>
+                {% for key in search_result.businesses %}
+                    <tr>
+                       <td><span><a href="#">{{ key.name|capfirst }}</a></span></td>
+                        <td>{{key.rating}}</td>
+                        <td>{{key.display_phone}}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if search_result.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ search_result.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ search_result.number }} of {{ search_result.paginator.num_pages }}.
+                    </span>
+
+                    {% if search_result.has_next %}
+                        <a href="?page={{ dishes.next_page_number }}">next</a>
+                        <a href="?page={{ dishes.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+<!--            <div class="orderby-container">-->
+<!--                <form method="GET" action="">-->
+<!--                    <div class="orderby-wrapper">-->
+<!--                        <label for="dishes">Order By: </label>-->
+<!--                        <select id="dishes" name="dishes">-->
+<!--                            <option value="dishName">Dish Name</option>-->
+<!--                            <option value="dishType">Dish Type</option>-->
+<!--                            <option value="rating">Rating</option>-->
+<!--                        </select>-->
+<!--                        <input type="submit">-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+
+        </div>
+        {% else %}
+            <p>{{ search_result.message }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endblock %}

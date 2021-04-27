@@ -1,0 +1,22 @@
+{% extends "MyThai/MyThai_base.html" %}
+
+{% block title %}MyThai! | Results{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="api-results">
+            <p>Search results: </p>
+            <ul>
+                <li>Name:   {{name}}</li>
+                <li>Phone:  {{display_phone}}</li>
+                <li>Rating: {{rating}}</li>
+                <li>Address:    {{address1}}</li>
+                <li>City:   {{city}}</li>
+                <li>Zip Code:   {{zip_code}}</li>
+                <li>Closed: {{is_closed}}</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

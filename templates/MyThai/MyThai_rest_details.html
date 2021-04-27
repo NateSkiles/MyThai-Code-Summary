@@ -1,0 +1,20 @@
+{% extends 'MyThai/MyThai_base.html' %}
+
+{% block tile %} MyThai! | Restaurant Details {% endblock %}
+
+{% block content %}
+
+    <div class="details-container">
+        <div class="restaurant-details">
+            <p><a href="{% url 'MyThai_rest_edit' restaurant.id %}"><i class="fas fa-edit"></i></a></p>
+            <p>Restaurant Name: {{ restaurant.name }}</p>
+            <p>Phone: {{ restaurant.phone }}</p>
+            <p>Address: {{ restaurant.address }}</p>
+            <p>City: {{ restaurant.city }}</p>
+            <p>Rating: {{ restaurant.rating }}</p>
+        </div>
+
+        <p><button id="delete_btn"><a href="{% url 'MyThai_rest_delete' restaurant.id %}"><i class="far fa-trash-alt"></i></a></button></p>
+    </div>
+
+{% endblock %}

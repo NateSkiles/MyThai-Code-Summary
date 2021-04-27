@@ -1,0 +1,24 @@
+{% extends 'MyThai/MyThai_base.html' %}
+
+{% block tile %} MyThai! | Edit Details {% endblock %}
+
+{% block content %}
+
+    <div class="edit-container">
+        <form method="POST" action="../edit/">
+            <table>
+                {% csrf_token %}
+                {{ form.nonfield_errors }}
+                {{ form.as_table }}
+            </table>
+            <div class="edit-wrapper">
+                <input type="submit">
+                <div>
+                    <button class="delete-btn"><a href="../delete/">Delete</a></button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

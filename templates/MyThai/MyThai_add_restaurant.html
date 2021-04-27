@@ -1,0 +1,16 @@
+{% extends "MyThai/MyThai_base.html" %}
+
+{% block title %}MyThai! | Add Restaurant{% endblock %}
+
+{% block content %}
+
+    <div id="restaurant-form">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button id="new-restaurant-btn" type="submit" name="Save_Restaurant">Save Restaurant</button>
+        </form>
+        <br>
+    </div>
+
+{% endblock %}

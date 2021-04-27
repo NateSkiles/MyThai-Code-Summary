@@ -1,0 +1,16 @@
+{% extends "MyThai/MyThai_base.html" %}
+
+{% block title %}MyThai! | Add Dish{% endblock %}
+
+{% block content %}
+
+    <div id="dish-form">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button id="new-dish-btn" type="submit" name="Save_Dish">Save Dish</button>
+        </form>
+        <br>
+    </div>
+
+{% endblock %}

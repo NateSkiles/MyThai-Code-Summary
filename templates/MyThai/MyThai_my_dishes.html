@@ -1,0 +1,84 @@
+{% extends 'MyThai/MyThai_base.html' %}
+
+{% block title %}MyThai! | My Restaurants{% endblock %}
+
+{% block content %}
+
+    <div class="search-container">
+        <form method="GET" action="">
+            <div class="search-wrapper">
+                <span>
+                    <input type="search"  id="search-terms" placeholder="Search for a Dish/Restaurant.." name="get_dish">
+                    <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="myRestaurants">
+
+        <div class="dishes-panel">
+            <h1>My Dishes!</h1>
+            <table id="dishes-table">
+                <thead>
+                        <tr>
+                           <th><span>Dish Name</span></th>
+                            <th>Dish Type</th>
+                            <th>Description</th>
+                            <th>Restaurant</th>
+                            <th>Rating</th>
+                        </tr>
+                </thead>
+
+                <tbody>
+                    {% for dish in dishes %}
+
+                    <tr>
+                       <td><span><a href="{% url 'MyThai_details' dish.id %}">{{ dish.dishName|capfirst }}</a></span></td>
+                        <td>{{ dish.dishType|capfirst }}</td>
+                        <td>{{ dish.description|capfirst }}</td>
+                        <td><span><a href="{% url 'MyThai_rest_details' dish.restaurant_id %}">{{ dish.restaurant|capfirst }}</a></span></td>
+                        <td>{{ dish.rating }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if dishes.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ dishes.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ dishes.number }} of {{ dishes.paginator.num_pages }}.
+                    </span>
+
+                    {% if dishes.has_next %}
+                        <a href="?page={{ dishes.next_page_number }}">next</a>
+                        <a href="?page={{ dishes.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="orderby-container">
+                <form method="GET" action="">
+                    <div class="orderby-wrapper">
+                        <label for="dishes">Order By: </label>
+                        <select id="dishes" name="dishes">
+                            <option value="dishName">Dish Name</option>
+                            <option value="dishType">Dish Type</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                        <input type="submit">
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
