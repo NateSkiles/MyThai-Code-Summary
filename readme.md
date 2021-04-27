@@ -309,16 +309,16 @@ From there the results are passed via the variable context back to the view to b
 One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all of my css to save time getting Bootsrap to work properly. I have included a few pictures to illistrate my app and it's functionaily outlined above.
 
 ### Homepage
-![Homepage](images/MyThai - Home.png)
+![Homepage](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Home.png)
 
 ### Add Dish
-![Add Dish](images/MyThai - Add Dish.png)
+![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Add%20Dish.png)
 
 ### My Dishes
-![My Dishes](images/MyThai - My Dishes.png)
+![My Dishes](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20My%20Dishes.png)
 
 ### API Results
-![API Results](images/MyThai - API Results.png)
+![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20API%20Results.png)
 
 ## Skills Acquired
 
