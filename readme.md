@@ -1,10 +1,11 @@
 # Python Live Project
 
 ### Key
-* Introduction
-* CRUD Functionality
-* API
-* Front-End
+* [Introduction](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#introduction)
+* [CRUD Functionality](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#crud-functionality)
+* [API](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#api)
+* [Front-End](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#front-end-development)
+* [Skills Acquired](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#skills-acquired)
 
 
 ## Introduction
@@ -305,8 +306,21 @@ Check the response code from the API, 200 means the request was succesful, 404 m
 From there the results are passed via the variable context back to the view to be rendered to the user.
 
 ## Front-End Development
+One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all of my css to save time getting Bootsrap to work properly. I have included a few pictures to illistrate my app and it's functionaily outlined above.
 
+### Homepage
+![Homepage](images/MyThai - Home.png)
+
+### Add Dish
+![Add Dish](images/MyThai - Add Dish.png)
+
+### My Dishes
+![My Dishes](images/MyThai - My Dishes.png)
+
+### API Results
+![API Results](images/MyThai - API Results.png)
 
 ## Skills Acquired
 
 
+*Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
