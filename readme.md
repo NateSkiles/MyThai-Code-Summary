@@ -133,7 +133,7 @@ def my_restaurants_view(request):
     context = {'dishes': dishes}
     return render(request, 'MyThai/MyThai_my_dishes.html', context)
 ```
-In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which I describe [here]().
+In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which is described [here](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#search-method-ofsearchform).
 
 ``` python
 def my_sorted(dish_list, my_sort):
@@ -238,18 +238,9 @@ def restaurant_search(request):
 ```
 This block of code renders the SearchForm as a prompt for the user to search for a Thai food restaurant in Portland OR. Once the form is submitted via a GET request, if valid, the SearchForm will call a the method *.search()*, store the results, and then pass the search results back to the page.
 
+
 #### .search() Method ofSearchForm
 
-These are the variable declared within the *.search()* method:
-
-``` python	
-	API_KEY = 'xxxxxxxxxxx'
-        API_HOST = 'https://api.yelp.com'
-        SEARCH_PATH = '/v3/businesses/{}'.format('search')
-        SEARCH_LIMIT = 5
-        SEARCH_CATEGORY = 'Thai'
-        SEARCH_LOCATION = 'Portland, OR'
-```
 Once the method is called, the search term is entered into the form is cleaned and them set as the value to the key  'term' in a dictionary of URL parameter that we will use later to make a request from the API.
 
 ``` python
@@ -257,7 +248,14 @@ class SearchForm(forms.Form):
     search_term = forms.CharField(max_length=100)
 
     def search(self):
-	    term = self.cleaned_data['search_term']
+   	API_KEY = 'xxxxxxxxxxx'
+        API_HOST = 'https://api.yelp.com'
+        SEARCH_PATH = '/v3/businesses/{}'.format('search')
+        SEARCH_LIMIT = 5
+        SEARCH_CATEGORY = 'Thai'
+        SEARCH_LOCATION = 'Portland, OR'
+	
+    	term = self.cleaned_data['search_term']
 
         url_params = {
             'term': term.replace(' ', '+'),  # Remove spaces from params
