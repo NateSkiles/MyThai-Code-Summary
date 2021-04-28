@@ -105,7 +105,7 @@ def new_dish(request):
     return render(request, 'MyThai/MyThai_add_dish.html', content)
 ```
 This block of code creates an object called form from the data the user's form POSTed. If the form is valid, the form is saved to the database
-![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Add%20Dish.png)
+![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/add_dish.gif)
 
 ### Read
 Once the user can add objects to the database, they need to be able to view this data. I did this by using DTL to populate a HTML table with the information in the database.
@@ -135,6 +135,8 @@ def my_restaurants_view(request):
     return render(request, 'MyThai/MyThai_my_dishes.html', context)
 ```
 In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which is described [here](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#search-method-ofsearchform).
+
+![sort](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/My%20Thai!%20_%20Home.gif)
 
 ``` python
 def my_sorted(dish_list, my_sort):
@@ -208,6 +210,8 @@ def dish_delete(request, pk):
     context = {"item": item}
     return render(request, "MyThai/MyThai_delete.html", context)
 ```
+
+![Delete](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/delete.gif)
 However, instead of saving when a POST request is made, we redirect the user to a conformation page assuring they really want to delete the item selected from the database.
 
 ## API
@@ -306,7 +310,7 @@ Check the response code from the API, 200 means the request was successful, 404 
 ```
 
 From there the results are passed via the variable context back to the view to be rendered to the user.
-![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/6281642f8ab8d5f5b404fb1be4430308ad836b30/images/MyThai%20-%20API%20Search.png)
+![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/MyThai!%20_%20Search.gif)
 
 ## Front-End Development
 One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all my CSS to save time getting Bootstrap to work properly. I have included a few pictures to illustrate my app and it's functionality outlined above.
