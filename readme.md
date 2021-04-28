@@ -212,6 +212,7 @@ def dish_delete(request, pk):
 ```
 
 ![Delete](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/delete.gif)
+
 However, instead of saving when a POST request is made, we redirect the user to a conformation page assuring they really want to delete the item selected from the database.
 
 ## API
