@@ -135,7 +135,9 @@ def my_restaurants_view(request):
     context = {'dishes': dishes}
     return render(request, 'MyThai/MyThai_my_dishes.html', context)
 ```
-In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which is described [here](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#search-method-ofsearchform).
+In this block of code, I query the database to return all of its objects using Django's Object Relation Mapping. ORM lets you interact with a database (SQLite in this case) like you would with SQL, but written in python. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. 
+
+I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which is described [here](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#search-method-ofsearchform).
 
 ![sort](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/My%20Thai!%20_%20Home.gif)
 
