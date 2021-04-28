@@ -105,6 +105,7 @@ def new_dish(request):
     return render(request, 'MyThai/MyThai_add_dish.html', content)
 ```
 This block of code creates an object called form from the data the user's form POSTed. If the form is valid, the form is saved to the database
+![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Add%20Dish.png)
 
 ### Read
 Once the user can add objects to the database, they need to be able to view this data. I did this by using DTL to populate a HTML table with the information in the database.
@@ -162,6 +163,7 @@ This function sorts the query-set based off the parameters passed in the GET req
 	</tr>
 {% endfor %}
 ```          
+![My Dishes](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20My%20Dishes.png)
 
 ### Update & Delete
 From the table created in this *my\_restaurants_view()* template I made all the names for the dishes and restaurants; hyperlinks that will take you to a details page that displays all the information on that object and allows the user to edit or delete that object. 
@@ -304,6 +306,7 @@ Check the response code from the API, 200 means the request was successful, 404 
 ```
 
 From there the results are passed via the variable context back to the view to be rendered to the user.
+![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/6281642f8ab8d5f5b404fb1be4430308ad836b30/images/MyThai%20-%20API%20Search.png)
 
 ## Front-End Development
 One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all my CSS to save time getting Bootstrap to work properly. I have included a few pictures to illustrate my app and it's functionality outlined above.
@@ -311,14 +314,6 @@ One of the things I would like to come back to is redoing the Front-End with Boo
 ### Homepage
 ![Homepage](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Home.png)
 
-### Add Dish
-![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Add%20Dish.png)
-
-### My Dishes
-![My Dishes](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20My%20Dishes.png)
-
-### API Results
-![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/6281642f8ab8d5f5b404fb1be4430308ad836b30/images/MyThai%20-%20API%20Search.png)
 
 ## Technologies Used
 The app is created in the Django Framework version 2.2, and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
