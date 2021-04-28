@@ -105,6 +105,7 @@ def new_dish(request):
     return render(request, 'MyThai/MyThai_add_dish.html', content)
 ```
 This block of code creates an object called form from the data the user's form POSTed. If the form is valid, the form is saved to the database
+
 ![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/add_dish.gif)
 
 ### Read
@@ -215,6 +216,8 @@ def dish_delete(request, pk):
 
 However, instead of saving when a POST request is made, we redirect the user to a conformation page assuring they really want to delete the item selected from the database.
 
+*Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
+
 ## API
 I also implemented a search feature for using the Yelp Fusion API to return a JSON response with based off the user's search. To accomplish, this I first created another form to get a search term from the user.
 
@@ -312,6 +315,8 @@ Check the response code from the API, 200 means the request was successful, 404 
 
 From there the results are passed via the variable context back to the view to be rendered to the user.
 ![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/MyThai!%20_%20Search.gif)
+
+*Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
 
 ## Front-End Development
 One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all my CSS to save time getting Bootstrap to work properly. I have included a few pictures to illustrate my app and it's functionality outlined above.
