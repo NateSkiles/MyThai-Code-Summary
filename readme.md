@@ -9,7 +9,7 @@
 
 
 ## Introduction
-The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes. As mentioned about the app is created in the Django Framework version 2.2, and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
+The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes.
 
 Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences durning the two week live project at the Tech Academy.
 
@@ -19,7 +19,7 @@ Note: Because this project was done in close collaboration with my team and fell
 ### Create
 To get started the first thing I had to do was create models for my app, these models are used to add objects to the database. For this project I used two models, one for the *Dishes*  and one for *Restaurants*. To do this I used Django's Model class and defined my models' attributes in the *models.py* file of the app: 
 
-```
+``` python
 class Restaurant(models.Model):
     name = models.CharField(max_length=40)
     phone = models.CharField(max_length=13, default='(000)000-0000')
@@ -34,7 +34,7 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 ```
-```
+``` python
 class Dish(models.Model):
     dishName = models.CharField(max_length=40)
     dishType = models.CharField(max_length=10, choices=DISH_TYPES)
@@ -51,7 +51,7 @@ class Dish(models.Model):
 ```
 Next to get information from the user I used the built in model forms to display a form to the user which when returned with valid data will create a new object in the database. This would be done in the forms.py project file.
 
-```
+``` python
 class RestaurantForm(ModelForm):
     class Meta:
         model = Restaurant
@@ -69,7 +69,7 @@ To display the form to the user, I created a template that uses a form with a PO
 
 Note: For the upcoming examples there are templates and code for both Restaurants and Dishes, but I have only included on prevent excessive redundancy. 
 
-```
+``` html
 {% extends "MyThai/MyThai_base.html" %}
 
 {% block title %}MyThai! | Add Dish{% endblock %}
@@ -91,7 +91,7 @@ This template extends the MyThai_base.html file, which is the base template for 
 
 Finally, to render the pages that add restaurants or dishes I must create a view that processes and brings all these things together. 
 
-```
+``` python
 def new_dish(request):
     form = DishForm(data=request.POST or None)
     if request.method == 'POST':
@@ -111,7 +111,7 @@ Once the user can add objects to the database, they need to be able to view this
 
 *views.py*
 
-```
+``` python
 def my_restaurants_view(request):
     # Store objects from DB in object as dict.
     dish_list = Dish.objects.all()
@@ -135,7 +135,7 @@ def my_restaurants_view(request):
 ```
 In this block of code I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a function that I made *my_sorted()*.
 
-```
+``` python
 def my_sorted(dish_list, my_sort):
     if my_sort == 'rating':  # If sorted by rating, reverse so highest goes at the top.
         asc = True
@@ -151,7 +151,7 @@ This function sorts the query-set based off of the parameters passed in the GET 
 
 *HTML template to display objects*:
 
-```
+``` html
 {% for dish in dishes %}
 	<tr>
 		<td><span><a href="{% url 'MyThai_details' dish.id %}">{{ dish.dishName|capfirst }}</a></span></td>
@@ -170,7 +170,7 @@ The view for the details page(s):
 
 *views.py*
 
-```
+``` python
 def details(request, pk):
     pk = int(pk)
     # Get object with pk
@@ -181,7 +181,7 @@ def details(request, pk):
 
 Once on the views  page the user edits the object through this view:
 
-```
+``` python
 def dish_edit(request, pk):
     pk = int(pk)
     item = get_object_or_404(Dish, pk=pk)
@@ -196,7 +196,7 @@ This view is passed the objects Primary Key (*PK*) and the request, which is use
 
 We can delete an object in the database much like we edited one:
 
-```
+``` python
 def dish_delete(request, pk):
     pk = int(pk)
     item = get_object_or_404(Dish, pk=pk)
@@ -213,13 +213,13 @@ I also implemented a search feature for using the Yelp Fusion API to return a JS
 
 *forms.py*
 
-```
+``` python
 class SearchForm(forms.Form):
     search_term = forms.CharField(max_length=100)
 ```
 Here is the views function to render the search form and then make a GET request when the SearchForm is submitted. 
 
-```
+``` python
 def restaurant_search(request):
     search_result = {}		
 	# If there is a GET request submitted
@@ -240,7 +240,7 @@ This block of code renders the SearchForm as a prompt for the user to search for
 
 These are the variable decalared within the *.search()* method:
 
-```	
+``` python	
 		API_KEY = 'xxxxxxxxxxx'
         API_HOST = 'https://api.yelp.com'
         SEARCH_PATH = '/v3/businesses/{}'.format('search')
@@ -250,7 +250,7 @@ These are the variable decalared within the *.search()* method:
 ```
 Once the method is called, the search term entered into the form is cleaned and them set as the value to the key  'term' in a dictionary of url parameter that we will use later to make a request from the api.
 
-```
+``` python
 class SearchForm(forms.Form):
     search_term = forms.CharField(max_length=100)
 
@@ -267,7 +267,7 @@ class SearchForm(forms.Form):
 ```
 Next is to define the url variable and pass the API ket to the headers used in the API request. Now everything is ready to be passed into a GET request that will hopefully contain the response to the request.
 
-```
+``` python
 		...
 		# Combine host and path to make url
         url = '{}{}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')))
@@ -283,7 +283,7 @@ Next is to define the url variable and pass the API ket to the headers used in t
 ```
 Check the response code from the API, 200 means the request was successful, 404 meaning that there was no results found at the search term, and finally any other code will just return an error to the user. If the status code is 200 returns a JSON object of the results.
 
-```
+``` python
 		...
         result = {}
 
@@ -319,6 +319,9 @@ One of the things I would like to come back to is redoing the Front-End with Boo
 
 ### API Results
 ![API Results](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/6281642f8ab8d5f5b404fb1be4430308ad836b30/images/MyThai%20-%20API%20Search.png)
+
+## Technologies Used
+The app is created in the Django Framework version 2.2, and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
 
 ## Skills Acquired
 I gained many skills during this live project, the one I'd like to dicuss first is confidence. While there are always things that can be improved on, the confidence gained in seeing this project start as nothing and become a usable app has been invaluable to me in my journey to become a professional in the industry. While it displays I still have quite a bit to learn yet, I like to think this project my shows skills to stick with something even when it looks like you've hit a dead-end. 
