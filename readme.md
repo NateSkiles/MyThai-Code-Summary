@@ -11,7 +11,7 @@
 ## Introduction
 The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes.
 
-Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences durning the two week live project at the Tech Academy.
+Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead, I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences during the two week live project at the Tech Academy.
 
 
 ## CRUD Functionality
@@ -49,7 +49,7 @@ class Dish(models.Model):
     def __str__(self):
         return self.dishName
 ```
-Next to get information from the user I used the built in model forms to display a form to the user which when returned with valid data will create a new object in the database. This would be done in the forms.py project file.
+Next to get information from the user I used the built-in model forms to display a form to the user which when returned with valid data will create a new object in the database. This would be done in the forms.py project file.
 
 ``` python
 class RestaurantForm(ModelForm):
