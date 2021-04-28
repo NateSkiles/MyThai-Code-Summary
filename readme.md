@@ -67,9 +67,9 @@ class DishForm(ModelForm):
 ```
 To display the form to the user, I created a template that uses a form with a POST request to POST new objects to the database.
 
-Note: For the upcoming examples there are templates and code for both Restaurants and Dishes, but I have only included on prevent excessive redundancy. 
+Note: For the upcoming examples there are templates and code for both Restaurants and Dishes, I have only included one to prevent excessive redundancy. 
 
-``` html
+``` Jinja
 {% extends "MyThai/MyThai_base.html" %}
 
 {% block title %}MyThai! | Add Dish{% endblock %}
@@ -89,7 +89,7 @@ Note: For the upcoming examples there are templates and code for both Restaurant
 ```
 This template extends the MyThai_base.html file, which is the base template for this project. 
 
-Finally, to render the pages that add restaurants or dishes I must create a view that processes and brings all these things together. 
+Finally, to render the pages that add restaurants or dishes I created a view that processes and brings all these things together. 
 
 ``` python
 def new_dish(request):
@@ -133,7 +133,7 @@ def my_restaurants_view(request):
     context = {'dishes': dishes}
     return render(request, 'MyThai/MyThai_my_dishes.html', context)
 ```
-In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a function that I made *my_sorted()*.
+In this block of code, I query the database to return all of its objects. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which I describe [here]().
 
 ``` python
 def my_sorted(dish_list, my_sort):
@@ -151,7 +151,7 @@ This function sorts the query-set based off the parameters passed in the GET req
 
 *HTML template to display objects*:
 
-``` html
+``` Jinja
 {% for dish in dishes %}
 	<tr>
 		<td><span><a href="{% url 'MyThai_details' dish.id %}">{{ dish.dishName|capfirst }}</a></span></td>
@@ -241,7 +241,7 @@ This block of code renders the SearchForm as a prompt for the user to search for
 These are the variable declared within the *.search()* method:
 
 ``` python	
-		API_KEY = 'xxxxxxxxxxx'
+	API_KEY = 'xxxxxxxxxxx'
         API_HOST = 'https://api.yelp.com'
         SEARCH_PATH = '/v3/businesses/{}'.format('search')
         SEARCH_LIMIT = 5
