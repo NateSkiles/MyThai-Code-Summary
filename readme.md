@@ -238,6 +238,8 @@ def restaurant_search(request):
 ```
 This block of code renders the SearchForm as a prompt for the user to search for a Thai food restaurant in Portland OR. Once the form is submitted via a GET request, if valid, the SearchForm will call a the method *.search()*, store the results, and then pass the search results back to the page.
 
+#### .search() Method ofSearchForm
+
 These are the variable declared within the *.search()* method:
 
 ``` python	
