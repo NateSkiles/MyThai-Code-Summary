@@ -17,7 +17,7 @@ Note: Because this project was done in close collaboration with my team and fell
 ## CRUD Functionality
 
 ### Create
-To get started the first thing I had to do was create models for my app, these models are used to add objects to the database. For this project, I used two models; one for the *Dishes*  and one for *Restaurants*. To do this I used Django's Model class and defined my models' attributes in the *models.py* file of the app: 
+The first thing I had to do was create models for my app. These models are used to add objects to the database. For this project, I used two models; one for the *Dishes*  and one for *Restaurants*. To do this, I used Django's Model class and defined my models' attributes in the *models.py* file of the app: 
 
 ``` python
 class Restaurant(models.Model):
@@ -49,7 +49,7 @@ class Dish(models.Model):
     def __str__(self):
         return self.dishName
 ```
-Next, to get information from the user, I used the built-in model forms to display a form to the user. Which, when returned with valid data, will create a new object in the database. This would be done in the forms.py project file.
+Next, to get information from the user, I used a built-in model to display a form to the user. Which, when returned with valid data, will create a new object in the database. Done in the forms.py project file.
 
 ``` python
 class RestaurantForm(ModelForm):
@@ -65,9 +65,9 @@ class DishForm(ModelForm):
         model = Dish
         fields = '__all__'
 ```
-To display the form to the user, I created a template that uses a form with a POST request to POST new objects to the database.
+To display the form to the user, I created a template that uses a form with a request to POST new objects to the database.
 
-Note: For the upcoming examples there are templates and code for both Restaurants and Dishes, I have only included one to prevent excessive redundancy. 
+Note: For the upcoming examples, there are templates and functions for both Restaurants and Dishes. I have only included one to prevent excessive redundancy. 
 
 ``` Jinja
 {% extends "MyThai/MyThai_base.html" %}
@@ -89,7 +89,7 @@ Note: For the upcoming examples there are templates and code for both Restaurant
 ```
 This template extends the MyThai_base.html file, which is the base template for this project. 
 
-Finally, to render the pages that add restaurants or dishes I created a view that processes and brings all these things together. 
+Finally, to render the pages that add restaurants and dishes, I created a view that processes and brings all these things together. 
 
 ``` python
 def new_dish(request):
@@ -104,12 +104,12 @@ def new_dish(request):
     content = {'form': form}
     return render(request, 'MyThai/MyThai_add_dish.html', content)
 ```
-This block of code creates an object called form from the data the user's form POSTed. If the form is valid, it is saved to the database
+This block of code creates an object called form from the data the user's form POSTed. If the form is valid, it is saved to the database.
 
 ![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/add_dish.gif)
 
 ### Read
-Once the user can add objects to the database, they need to be able to view this data. I did this by using DTL to populate a HTML table with the information in the database.
+Once the user can add objects to the database, they need to be able to view this data. I did this by using DTL to populate an HTML table with the information in the database.
 
 *views.py*
 
@@ -153,7 +153,7 @@ def my_sorted(dish_list, my_sort):
     dish_list = sorted(dish_list, key=attrgetter(my_sort), reverse=asc)  # Sort dict by model attribute = 'my_sort'
     return dish_list
 ```
-This function sorts the query-set based off the parameters passed in the GET request. This function had me stuck for a bit, I couldn't get my parameter *'my_sort'* to be a valid key in the *sorted()* function. After searching the Django documentation I figured out I needed to turn *my_sort* parameter into a callable object, and the best was to do that is with the python function *attrgetter()*. Attrgetter returns an attribute of an object as a callable object. 
+This function sorts the query-set based on the parameters passed in the GET request. This function had me stuck for a bit, I couldn't get my parameter *'my_sort'* to be a valid key in the *sorted()* function. After searching the Django documentation I figured out I needed to turn *my_sort* parameter into a callable object, and the best way to do that is with the python function *attrgetter()*. Attrgetter returns an attribute of an object as a callable object. 
 
 *HTML template to display objects*:
 
@@ -171,7 +171,7 @@ This function sorts the query-set based off the parameters passed in the GET req
 ![My Dishes](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20My%20Dishes.png)
 
 ### Update & Delete
-From the table created in this *my\_restaurants_view()* template I made all the names for the dishes and restaurants; hyperlinks that will take you to a details page that displays all the information on that object and allows the user to edit or delete that object. 
+From the table created in the *my\_restaurants_view()* template, I made all the names for the dishes and restaurants hyperlinks. The links take the user to a details page that displays all the information on that object allowing the user to edit or delete that object. 
 
 The view for the details page(s):
 
@@ -186,7 +186,7 @@ def details(request, pk):
     return render(request, 'MyThai/MyThai_details.html', context)
 ```
 
-Once on the views  page the user edits the object through this view:
+Once on the views page, the user edits the object through this view:
 
 ``` python
 def dish_edit(request, pk):
@@ -199,7 +199,7 @@ def dish_edit(request, pk):
     else:
         return render(request, 'MyThai/MyThai_dish_edit.html', {'form': form})
 ```
-This view is passed the objects Primary Key (*PK*) and the request, which is used to populate our DishForm with the information stored in the database under that primary key. When the user clicks the submit button in the template a POST request is made to save the form (object). The function *save_edit()* check the validity of the form and returns any errors.
+This view is passed the objects Primary Key (*PK*) and the request. These used to populate our DishForm with the information stored in the database under that primary key. When the user clicks the submit button in the template, a POST request is made to save the form (object). The function *save_edit()* check the validity of the form and returns any errors.
 
 We can delete an object in the database much like we edited one:
 
@@ -216,7 +216,7 @@ def dish_delete(request, pk):
 
 ![Delete](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/delete.gif)
 
-However, instead of saving when a POST request is made, we redirect the user to a conformation page assuring they really want to delete the item selected from the database.
+However, instead of saving when a POST request is made the user is redirected to a confirmation page assuring they want to delete the item selected from the database.
 
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
 
