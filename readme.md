@@ -279,7 +279,7 @@ class SearchForm(forms.Form):
 ```
 Next is to define the URL variable and pass the API key to the headers used in the API request. Now everything is ready to be passed into a GET request that will hopefully contain the response to the request.
 
-*Note*: The proper way to start an API key in Django is with [Decouple](https://pypi.org/project/python-decouple/#example-how-do-i-use-it-with-django). Decouple was not an option for this project and I have included the API key here for illistration. 
+*Note*: The proper way to store an API key in Django is with [Decouple](https://pypi.org/project/python-decouple/#example-how-do-i-use-it-with-django). Decouple was not an option for this project and I have included the API key here for illistration. 
 
 ``` python
 		...
