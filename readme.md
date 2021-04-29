@@ -11,7 +11,7 @@
 ## Introduction
 The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with a rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes.
 
-Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead, I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences during the two-week live project at the Tech Academy.
+*Note*: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead, I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences during the two-week live project at the Tech Academy.
 
 
 ## CRUD Functionality
@@ -67,7 +67,7 @@ class DishForm(ModelForm):
 ```
 To display the form to the user, I created a template that uses a form with a request to POST new objects to the database.
 
-Note: For the upcoming examples, there are templates and functions for both Restaurants and Dishes. I have only included one to prevent excessive redundancy. 
+*Note*: For the upcoming examples, there are templates and functions for both Restaurants and Dishes. I have only included one to prevent excessive redundancy. 
 
 ``` Jinja
 {% extends "MyThai/MyThai_base.html" %}
@@ -278,6 +278,8 @@ class SearchForm(forms.Form):
         ...
 ```
 Next is to define the URL variable and pass the API key to the headers used in the API request. Now everything is ready to be passed into a GET request that will hopefully contain the response to the request.
+
+*Note*: The proper way to start an API key in Django is with [Decouple](https://pypi.org/project/python-decouple/#example-how-do-i-use-it-with-django). Decouple was not an option for this project and I have included the API key here for illistration. 
 
 ``` python
 		...
