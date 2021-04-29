@@ -221,7 +221,7 @@ However, instead of saving when a POST request is made, we redirect the user to 
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
 
 ## API
-I also implemented a search feature for using the Yelp Fusion API to return a JSON response with based off the user's search. To accomplish, this I first created another form to get a search term from the user.
+I also implemented a search feature for using the Yelp Fusion API to return a JSON response based on the user's search. To accomplish, this I first created another form to get a search term from the user.
 
 *forms.py*
 
@@ -248,12 +248,12 @@ def restaurant_search(request):
 
     return render(request, 'MyThai/MyThai_api_search.html', context)
 ```
-This block of code renders the SearchForm as a prompt for the user to search for a Thai food restaurant in Portland OR. Once the form is submitted via a GET request, if valid, the SearchForm will call a the method *.search()*, store the results, and then pass the search results back to the page.
+This block of code renders the SearchForm as a prompt for the user to search for a Thai food restaurant in Portland, OR. Once the form submits via a GET request, if valid, the SearchForm will call the method *.search()*, store the results, and then pass the search results back to the page.
 
 
 #### .search() Method ofSearchForm
 
-Once the method is called, the search term is entered into the form is cleaned and them set as the value to the key  'term' in a dictionary of URL parameter that we will use later to make a request from the API.
+Once the method is called, the search term is entered into the form is cleaned, and then set as the value to the key  'term' in a dictionary of the URL parameter that we will use later to make a request from the API.
 
 ``` python
 class SearchForm(forms.Form):
@@ -293,7 +293,7 @@ Next is to define the URL variable and pass the API key to the headers used in t
         response = requests.request('GET', url, headers=headers, params=url_params)
         ...
 ```
-Check the response code from the API, 200 means the request was successful, 404 meaning that there were no results found at the search term, and finally any other code will just return an error to the user. If the status code is 200 returns a JSON object of the results.
+Check the response code from the API: 200 means the request was successful, 404 that there were no results found, and any other code will return an error to the user. If the status code is 200, return a JSON object of the response.
 
 ``` python
 		...
@@ -321,7 +321,7 @@ From there the results are passed via the variable context back to the view to b
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
 
 ## Front-End Development
-One of the things I would like to come back to is redoing the Front-End with Bootstrap, I just wrote out all my CSS to save time getting Bootstrap to work properly. I have included a few pictures to illustrate my app and it's functionality outlined above.
+One of the things I would like to come back to is redoing the Front-End with Bootstrap. I wrote out the CSS to save time getting Bootstrap to work for this project. I have included a few pictures to illustrate my app and its functionality outlined above.
 
 ### Homepage
 ![Homepage](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/0f9ffa67d5aeb1f8c2e1831c025d1c08cb3e6818/images/MyThai%20-%20Home.png)
@@ -331,10 +331,10 @@ One of the things I would like to come back to is redoing the Front-End with Boo
 The app is created in the Django Framework version 2.2 and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
 
 ## Skills Acquired
-I gained many skills during this live project, the one I would like to discuss first is confidence. While there are always things to be improved on,  the confidence gained from starting with nothing to having a fully functioning app has given me confidence in my ability to problem solve as a developer. I still have quite a bit to learn yet, but this project ability to stick with something even when it looks like you've hit a dead-end. Learning how to get yourself out of those situations through research and asking the right questions will always be a skill I take away from any project I complete. 
+I gained many skills during this live project, the one I would like to discuss first is confidence. While there are always things to be improved on, the confidence gained from starting with nothing to having a fully functioning app has given me confidence in my ability to problem solve as a developer. I still have a bit to learn, but this project shows the ability to stick with something even when it looks like you've hit a dead-end. Learning how to get yourself out of those situations through research and asking the right questions will always be a skill I take away from any project I complete.
 
-One of my takeaways from the project and working as a small piece of a larger project that is already underway is how important version control is to the organization of a project. When there’s even one developer working on a project, things can get messy quickly, so being comfortable managing your own branches as well as working around other developer’s branches is an integral part of working as a team. 
+A takeaway from the project and working as a small piece of a larger project is how vital version control is to the organization of a project. When there’s even one developer working on a project, things can get messy quickly, so being comfortable managing your branches and working around other developer’s branches is an integral part of working as a team. 
 
-Finally, as for technical skills, I gained a lot of knowledge on Python/Django and more specifically the logic behind the Model-View-Controller (MVC) framework pattern. While Django uses a Template, not a controller, and would be considered a Model-View-Template (MVT), I still gained the skills to understand the patterns behind the framework and how its different parts interact. This will give me the tools to more effectively familiarize myself with new frameworks down the road.
+Finally, as for technical skills, I gained a lot of knowledge on Python/Django and, more specifically, the logic behind the Model-View-Controller (MVC) framework pattern. Django uses a Template, not a controller, and would be considered a Model-View-Template (MVT). I still gained the skills to understand the patterns behind the framework and how its different parts interact. This gave me the tools to more effectively familiarize myself with new frameworks and technologies down the road.
 
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
