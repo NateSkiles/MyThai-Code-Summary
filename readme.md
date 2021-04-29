@@ -9,15 +9,15 @@
 
 
 ## Introduction
-The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes.
+The task of this project was to create an app in the Django framework that would help the user keep track of a collection of items. The app I created is used to store the user's favorite Thai food takeout. The user can add a restaurant they ordered from and then add a dish with a rating and description to the app. This allows you to search or sort the SQLite database to find specific dishes from multiple restaurants and compare the ratings they gave to those dishes.
 
-Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead, I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences during the two week live project at the Tech Academy.
+Note: Because this project was done in close collaboration with my team and fellow students, I may not post the project in its entirety. Instead, I have included my HTML templates, CSS & images, as well as this code summary to document my work and experiences during the two-week live project at the Tech Academy.
 
 
 ## CRUD Functionality
 
 ### Create
-To get started the first thing I had to do was create models for my app, these models are used to add objects to the database. For this project I used two models, one for the *Dishes*  and one for *Restaurants*. To do this I used Django's Model class and defined my models' attributes in the *models.py* file of the app: 
+To get started the first thing I had to do was create models for my app, these models are used to add objects to the database. For this project, I used two models; one for the *Dishes*  and one for *Restaurants*. To do this I used Django's Model class and defined my models' attributes in the *models.py* file of the app: 
 
 ``` python
 class Restaurant(models.Model):
@@ -49,7 +49,7 @@ class Dish(models.Model):
     def __str__(self):
         return self.dishName
 ```
-Next to get information from the user I used the built-in model forms to display a form to the user which when returned with valid data will create a new object in the database. This would be done in the forms.py project file.
+Next, to get information from the user, I used the built-in model forms to display a form to the user. Which, when returned with valid data, will create a new object in the database. This would be done in the forms.py project file.
 
 ``` python
 class RestaurantForm(ModelForm):
@@ -104,7 +104,7 @@ def new_dish(request):
     content = {'form': form}
     return render(request, 'MyThai/MyThai_add_dish.html', content)
 ```
-This block of code creates an object called form from the data the user's form POSTed. If the form is valid, the form is saved to the database
+This block of code creates an object called form from the data the user's form POSTed. If the form is valid, it is saved to the database
 
 ![Add Dish](https://github.com/NateSkiles/Python-Live-Project-Code-Summary/blob/main/images/add_dish.gif)
 
@@ -135,7 +135,7 @@ def my_restaurants_view(request):
     context = {'dishes': dishes}
     return render(request, 'MyThai/MyThai_my_dishes.html', context)
 ```
-In this block of code, I query the database to return all of its objects using Django's Object Relation Mapping. ORM lets you interact with a database (SQLite in this case) like you would with SQL, but written in python. I use Django Q objects to create filter objects, this allows me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. 
+In this block of code, I query the database to return all of its objects using Django's Object Relation Mapping. ORM lets you interact with a database (SQLite in this case) as you would with SQL, but written in python. I use Django Q objects to create filter objects, allowing me to filter the query-set by Dish Name or Restaurant Name, instead of only one or the other. 
 
 I also used Paginator through this project to create paged objects for neater display in the templates. I also call a helper function *my_sorted()*, which is described [here](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#search-method-ofsearchform).
 
@@ -328,13 +328,13 @@ One of the things I would like to come back to is redoing the Front-End with Boo
 
 
 ## Technologies Used
-The app is created in the Django Framework version 2.2, and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
+The app is created in the Django Framework version 2.2 and was written with Python, HTML, CSS, & DTL (Django-Template Language). 
 
 ## Skills Acquired
-I gained many skills during this live project, the one I would like to discuss first is confidence. While there are always things that can be improved on, the confidence gained in seeing this project start as nothing and become a usable app has been invaluable to me in my journey to become a professional in the industry. While it displays I still have quite a bit to learn yet, this project shows my skills to stick with something even when it looks like you've hit a dead-end. Learning how to get yourself out of those situations through research and asking the right questions will always be a skill I take away from any project I complete. 
+I gained many skills during this live project, the one I would like to discuss first is confidence. While there are always things to be improved on,  the confidence gained from starting with nothing to having a fully functioning app has given me confidence in my ability to problem solve as a developer. I still have quite a bit to learn yet, but this project ability to stick with something even when it looks like you've hit a dead-end. Learning how to get yourself out of those situations through research and asking the right questions will always be a skill I take away from any project I complete. 
 
-One of my takeaways from the project and working as a small piece of a larger project that is already underway is how important version control is to the organization of a project. When there’s even one developer working on a project, things can get messy quick, so being comfortable managing your own branches as well as working around other developer’s branches is an integral part of working as a team. 
+One of my takeaways from the project and working as a small piece of a larger project that is already underway is how important version control is to the organization of a project. When there’s even one developer working on a project, things can get messy quickly, so being comfortable managing your own branches as well as working around other developer’s branches is an integral part of working as a team. 
 
-Finally, as for technical skills, I gained a lot of knowledge on Python/Django and more specifically the logic behind Model-View-Controller (MVC) framework pattern. While Django uses a Template, not a controller, and would be considered a Model-View-Template (MVT), I still gained the skills to understand the patterns behind the framework and how it's different parts interact. This will give me the tools to more effectively familiarize myself with new frameworks down the road.
+Finally, as for technical skills, I gained a lot of knowledge on Python/Django and more specifically the logic behind the Model-View-Controller (MVC) framework pattern. While Django uses a Template, not a controller, and would be considered a Model-View-Template (MVT), I still gained the skills to understand the patterns behind the framework and how its different parts interact. This will give me the tools to more effectively familiarize myself with new frameworks down the road.
 
 *Back to [Top](https://github.com/NateSkiles/Python-Live-Project-Code-Summary#python-live-project)*
